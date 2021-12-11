@@ -13,9 +13,6 @@
       <label class="block text-gray-700 text-sm font-bold mb-2" for="tokenID">Token ID</label>
       <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="tokenID" v-model="tokenID">
     </div>
-    <div class="mb-4">
-      <button class="bg-fluffy hover:bg-fluffy-darker text-black font-semibold w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline" @click="getImage">Generate Image</button>
-    </div>
     <label class="block text-gray-700 text-sm font-bold mb-2" for="collection">Accesories</label>
     <div class="mx-auto max-w-sm text-center flex flex-wrap justify-center">
       <div class="flex items-center mr-4 mb-4">
@@ -38,11 +35,18 @@
           <input class="form-checkbox h-5 w-5 text-fluffy" type="radio" name="blows" v-model="blows" :value="2"><span class="ml-2 text-gray-700">Open Blow  </span>
         </label>
       </div>
-
     </div>
-
+    <div class="mb-4">
+      <button class="bg-fluffy hover:bg-fluffy-darker text-black w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline" @click="resetProperties">Reset</button>
+    </div>
+    <div class="mb-4">
+      <button class="bg-fluffy hover:bg-fluffy-darker text-black w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline" @click="getImage">Generate Image</button>
+    </div>
+    <div class="flex items-center mb-4 min-w-full">
+      <img class="w-full" :src="imageURL" crossorigin="anonymous">
+    </div>
     <div class="flex items-center">
-      <img :src="imageURL" width="540" crossorigin="anonymous">
+      <a class="bg-fluffy hover:bg-fluffy-darker text-center text-black w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline" :href="imageURL" download="fluffy.png"> Download </a>
     </div>
   </form>
 </div>
@@ -72,6 +76,12 @@ export default {
     const blows = ref(0)
 
     const lights = ref(false)
+
+    const resetProperties = () => {
+      glasses.value = false
+      blows.value = 0
+      lights.value = false
+    }
 
     const getImage = () => {
       imageURL.value = '/spinner.svg'
@@ -116,6 +126,7 @@ export default {
       glasses,
       blows,
       lights,
+      resetProperties,
       getImage,
     }
   },
