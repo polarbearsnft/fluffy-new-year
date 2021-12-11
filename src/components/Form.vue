@@ -89,16 +89,15 @@ export default {
         imageArray.push('/layer-2022.png')
       }
 
+      if (lights.value) {
+        imageArray.push('/layer-lights.png')
+      }
+
       if (blows.value == 1) {
         imageArray.push('/layer-blow1.png')
       } else if (blows.value == 2) {
         imageArray.push('/layer-blow2.png')
       }
-
-      if (lights.value) {
-        imageArray.push('/layer-lights.png')
-      }
-
 
       mergeImages(imageArray, {
         crossOrigin: 'anonymous'
