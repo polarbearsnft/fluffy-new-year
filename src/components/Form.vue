@@ -74,6 +74,7 @@ export default {
     const lights = ref(false)
 
     const getImage = () => {
+      imageURL.value = '/spinner.svg'
       let baseURL = "https://fpb.mypinata.cloud/ipfs/"
       if (collection.value == 1) {
         baseURL += "QmUE6w9xCi7ZHFfUziEcuhYrsPrMaRuRyREJBAzihDbH8L/"
