@@ -120,10 +120,6 @@ export default {
         imageArray.push('/sweater'+ sweater.value + '.png')
       }
 
-      if (glasses.value) {
-        imageArray.push('/layer-2022.png')
-      }
-
       if (lights.value) {
         imageArray.push('/layer-lights.png')
       }
@@ -132,6 +128,10 @@ export default {
         imageArray.push('/layer-blow1.png')
       } else if (blows.value == 2) {
         imageArray.push('/layer-blow2.png')
+      }
+
+      if (glasses.value) {
+        imageArray.push('/layer-2022.png')
       }
 
       mergeImages(imageArray, {
