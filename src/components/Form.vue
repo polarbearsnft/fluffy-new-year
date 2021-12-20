@@ -37,6 +37,14 @@
       </div>
     </div>
     <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="sweater">Sweater</label>
+      <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="sweater" v-model="sweater">
+        <option v-for="option in sweaterOptions" :value="option.value" :key="option.id">
+          {{ option.text }}
+        </option>
+      </select>
+    </div>
+    <div class="mb-4">
       <button class="bg-fluffy hover:bg-fluffy-darker text-black w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline" @click="resetProperties">Reset</button>
     </div>
     <div class="mb-4">
@@ -69,6 +77,17 @@ export default {
       { id: 2, text: 'Fluffy Polar Bears Special Editions - FPB#99', value: 2 },
     ])
 
+    const sweater = ref(0)
+
+    const sweaterOptions = ref([
+      { id: 0, text: 'Without Sweater', value: 0 },
+      { id: 1, text: 'My Ugly Sweater', value: 1 },
+      { id: 2, text: 'WAGMI', value: 2 },
+      { id: 3, text: 'Ho Ho HODL', value: 3 },
+      { id: 4, text: 'Snowbear FPB', value: 4 },
+      { id: 5, text: 'Ethereum', value: 5 },
+    ])
+
     const tokenID = ref(1)
 
     const glasses = ref(false)
@@ -96,6 +115,11 @@ export default {
       console.log(blows.value);
 
       let imageArray = [ baseURL ]
+
+      if (sweater.value) {
+        imageArray.push('/sweater'+ sweater.value + '.png')
+      }
+
       if (glasses.value) {
         imageArray.push('/layer-2022.png')
       }
@@ -122,6 +146,8 @@ export default {
       imageURL,
       collection,
       collectionOptions,
+      sweater,
+      sweaterOptions,
       tokenID,
       glasses,
       blows,
