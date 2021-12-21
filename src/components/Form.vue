@@ -27,6 +27,16 @@
       </div>
       <div class="flex items-center mr-4 mb-4">
         <label class="inline-flex items-center mt-3">
+          <input class="form-checkbox h-5 w-5 text-fluffy" type="checkbox" v-model="popcorn"><span class="ml-2 text-gray-700">Popcorn</span>
+        </label>
+      </div>
+      <div class="flex items-center mr-4 mb-4">
+        <label class="inline-flex items-center mt-3">
+          <input class="form-checkbox h-5 w-5 text-fluffy" type="checkbox" v-model="soda"><span class="ml-2 text-gray-700">Soda</span>
+        </label>
+      </div>
+      <div class="flex items-center mr-4 mb-4">
+        <label class="inline-flex items-center mt-3">
           <input class="form-checkbox h-5 w-5 text-fluffy" type="radio" name="blows" v-model="blows" :value="1"><span class="ml-2 text-gray-700">Closed Blow</span>
         </label>
       </div>
@@ -96,6 +106,10 @@ export default {
 
     const lights = ref(false)
 
+    const popcorn = ref(false)
+
+    const soda = ref(false)
+
     const resetProperties = () => {
       glasses.value = false
       blows.value = 0
@@ -134,6 +148,14 @@ export default {
         imageArray.push('/layer-2022.png')
       }
 
+      if (popcorn.value) {
+        imageArray.push('/popcorn.png')
+      }
+
+      if (soda.value) {
+        imageArray.push('/soda.png')
+      }
+
       mergeImages(imageArray, {
         crossOrigin: 'anonymous'
       })
@@ -152,6 +174,8 @@ export default {
       glasses,
       blows,
       lights,
+      popcorn,
+      soda,
       resetProperties,
       getImage,
     }
