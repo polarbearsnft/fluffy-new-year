@@ -114,6 +114,9 @@ export default {
       glasses.value = false
       blows.value = 0
       lights.value = false
+      popcorn.value = false
+      soda.value = false
+      sweater.value = 0
     }
 
     const getImage = () => {
